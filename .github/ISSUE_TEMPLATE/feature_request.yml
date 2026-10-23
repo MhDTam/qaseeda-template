@@ -1,0 +1,16 @@
+name: Feature request / اقتراح
+description: Suggest an improvement in Arabic or English.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to improve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Suggested behavior
+    validations:
+      required: true

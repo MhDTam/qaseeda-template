@@ -1,0 +1,29 @@
+name: Bug report / بلاغ مشكلة
+description: Report a reproducible problem without uploading private media.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: App version and environment
+      placeholder: 1.00, Windows 11 x64, NVIDIA GTX 1080 / browser version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Arabic and English reports are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: export
+    attributes:
+      label: Export settings and error message
+      description: For export issues, include resolution, frame rate, format, GPU and FFmpeg version. Remove personal paths and private media.

@@ -1,0 +1,33 @@
+name: Source and Windows build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run check
+  windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify FFmpeg discovery
+        shell: pwsh
+        run: ./tests/ffmpeg-discovery.ps1
+      - name: Compile C++, restore WebView2, and compile desktop host
+        shell: pwsh
+        run: ./desktop/Build.ps1 -SkipFFmpeg
+      - name: Verify packaged host
+        shell: pwsh
+        run: |
+          $report=Join-Path $pwd 'release/self-test.txt'
+          $p=Start-Process -FilePath ./release/QaseedaTemplate.exe -ArgumentList @('--self-test',('"'+$report+'"')) -Wait -PassThru -WindowStyle Hidden
+          if($p.ExitCode -ne 0 -or !(Test-Path $report) -or !(Select-String -Path $report -SimpleMatch 'Ready=True')) { throw 'Host self-test failed.' }
+# CI intentionally does not publish an incomplete executable or require a GPU.

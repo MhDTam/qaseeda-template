@@ -1,0 +1,10 @@
+'use strict';
+['customWidth','customFps','customBitrate'].forEach(id=>$(id).addEventListener('input',updateExportSummary));
+['arabicFont','latinFont'].forEach(id=>$(id).addEventListener('change',async()=>{await document.fonts.load('17px "'+$(id).value+'"');state.dirty=true;}));
+function applyPickedColor(color){$('originalColors').checked=false;setColor(color);status(ui('تم اختيار اللون ')+color.toUpperCase()+'.');}
+function startPreviewPicker(){state.pickingColor=true;document.querySelector('.canvas-wrap').classList.add('picking-color');status(ui('انقر على لون داخل المعاينة. اضغط Esc للإلغاء.'));}
+function stopPreviewPicker(){state.pickingColor=false;document.querySelector('.canvas-wrap').classList.remove('picking-color');}
+$('pickColor').addEventListener('click',async()=>{if(state.exporting)return;try{if(window.NATIVE_EXPORT_AVAILABLE){const result=await nativeCall('pickColor');if(result.color)applyPickedColor(result.color);return;}if(window.EyeDropper){const result=await new EyeDropper().open();applyPickedColor(result.sRGBHex);return;}startPreviewPicker();}catch(error){if(error.name==='AbortError')return;startPreviewPicker();}});
+$('color').addEventListener('click',async event=>{if(!window.NATIVE_EXPORT_AVAILABLE)return;event.preventDefault();try{const result=await nativeCall('chooseColor',{color:state.color});if(result.color)applyPickedColor(result.color);}catch(error){status(error.message);}});
+document.querySelector('.canvas-wrap').addEventListener('click',event=>{if(!state.pickingColor)return;event.preventDefault();event.stopPropagation();const bounds=canvas.getBoundingClientRect(),x=Math.max(0,Math.min(canvas.width-1,Math.floor((event.clientX-bounds.left)/bounds.width*canvas.width))),y=Math.max(0,Math.min(canvas.height-1,Math.floor((event.clientY-bounds.top)/bounds.height*canvas.height))),pixel=ctx.getImageData(x,y,1,1).data;stopPreviewPicker();applyPickedColor('#'+Array.from(pixel.slice(0,3)).map(v=>v.toString(16).padStart(2,'0')).join(''));},true);
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&state.pickingColor){stopPreviewPicker();status(ui('تم إلغاء التقاط اللون.'));}});

@@ -1,0 +1,15 @@
+{
+  "name": "qaseeda-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local Arabic audio visualizer and Windows video exporter",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "check": "node scripts/check-source.mjs && node tests/native-export-setup.mjs",
+    "package:source": "node scripts/prepare-github.mjs"
+  },
+  "displayVersion": "1.00"
+}

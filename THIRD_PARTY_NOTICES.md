@@ -1,0 +1,9 @@
+# Third-party components and artwork
+
+- `desktop/native-renderer/include/json.hpp`: nlohmann/json 3.11.3, MIT; notice retained in the header and `licenses/NativeRenderer-Licenses.txt`.
+- `desktop/native-renderer/include/nvEncodeAPI.h`: NVIDIA NVENC API, MIT-style header license; notice retained in the header and `licenses/NativeRenderer-Licenses.txt`.
+- Microsoft WebView2 SDK 1.0.4258.31: restored from NuGet with SHA-256 verification; `licenses/WebView2-License.txt`. WebView2 Runtime is installed separately by the user.
+- Official public Windows releases do not bundle FFmpeg; users install it separately. FFmpeg runs as a separate executable. No FFmpeg binary is committed to the public source repository. The tested private build is Gyan FFmpeg 6.0 full, GPLv3; `licenses/FFmpeg-License.txt` and `licenses/FFmpeg-Build.txt` retain the tested build information, source commit and configuration. If building with another distribution, replace those notices with the matching license, build information and corresponding-source arrangements before distributing that executable. Official build information: https://www.gyan.dev/ffmpeg/builds/ .
+- Thmanyah is an optional third-party font, not relicensed under MIT. The clean public source package contains only system-font fallbacks and the supplied license document, not the embedded font binary. Licensed users may install the font locally. System fonts remain available.
+- The public source pack replaces private reference artwork and motion samples with original code-generated SVG artwork and a periodic light atlas. It contains no poem recording, personal cover or reference video. The project owner's supplied application icon is distributed with the project's artwork under MIT.
+- User-uploaded images, audio and logos remain local to that user's machine and are not part of the source distribution.

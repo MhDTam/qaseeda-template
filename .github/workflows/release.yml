@@ -1,0 +1,48 @@
+name: Build release candidate
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  windows-release:
+    runs-on: windows-2022
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check source and release version
+        shell: pwsh
+        run: |
+          npm run check
+          if($LASTEXITCODE -ne 0){throw 'Source checks failed'}
+          $version=(Get-Content package.json -Raw | ConvertFrom-Json).displayVersion
+          if($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -ne "v$version"){throw 'Tag and displayVersion differ'}
+      - name: Build public executable without bundled FFmpeg
+        shell: pwsh
+        run: ./desktop/Build.ps1 -ExternalFFmpeg
+      - name: Verify FFmpeg discovery
+        shell: pwsh
+        run: ./tests/ffmpeg-discovery.ps1
+      - name: Check payload and create release files
+        shell: pwsh
+        run: ./scripts/package-release.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qaseeda-template-release
+          path: release/distribution/*
+          if-no-files-found: error
+      - name: Create draft GitHub Release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          $version=(Get-Content package.json -Raw | ConvertFrom-Json).displayVersion
+          $assets=Get-ChildItem -LiteralPath ./release/distribution -File | ForEach-Object FullName
+          gh release create $env:GITHUB_REF_NAME --draft --verify-tag --title "Qaseeda Template $version" --notes-file docs/RELEASE_NOTES_1.00.md @assets
+          if($LASTEXITCODE -ne 0){throw 'Draft release creation failed'}
