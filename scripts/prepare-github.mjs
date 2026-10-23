@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import {createPublicTemplate} from './public-template.mjs';
 const root=resolve(import.meta.dirname,'..'),out=join(root,'publish/github');
 mkdirSync(out,{recursive:true});
-const files=['.gitignore','.gitattributes','package.json','README.md','README.en.md','CHANGELOG.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','TESTING.md','Start.cmd','index.html','styles.css','app.js','scene-renderer.js','native-scene-export.js','export-frame-packer.js','export-history.js','editor-options.js','custom-background.js','background-worker.js','i18n.js','locales/en.js',
+const files=['.gitignore','.gitattributes','package.json','README.md','README.en.md','README.ar.md','CHANGELOG.md','LICENSE','THIRD_PARTY_NOTICES.md','CONTRIBUTING.md','SECURITY.md','TESTING.md','Start.cmd','index.html','styles.css','app.js','scene-renderer.js','native-scene-export.js','export-frame-packer.js','export-history.js','editor-options.js','custom-background.js','background-worker.js','i18n.js','locales/en.js',
  'tests/background-scroll.js','tests/language-switch.js','tests/ffmpeg-discovery.ps1','tests/native-export-setup.mjs','scripts/check-source.mjs','scripts/prepare-github.mjs','scripts/public-template.mjs',
  'desktop/Build.ps1','desktop/Restore-Dependencies.ps1','desktop/NaghamLauncher.cs','desktop/NativeExport.cs','desktop/NativeSceneExport.cs','desktop/ExportHistory.cs','desktop/ScreenColorPicker.cs','desktop/Localization.cs','desktop/Qaseeda.ico',
  'desktop/native-renderer/Build.ps1','desktop/native-renderer/main.cpp','desktop/native-renderer/scene.hlsl','desktop/native-renderer/include/json.hpp','desktop/native-renderer/include/nvEncodeAPI.h',

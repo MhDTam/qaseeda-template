@@ -1,6 +1,6 @@
 # Qaseeda Template · 1.00
 
-[العربية](README.md) · **English**
+**English** · [العربية](README.ar.md)
 
 An offline audio visualizer and Windows video creator with a minimal glass interface. Upload an audio track, cover artwork, an optional logo and your own background image. Animated lighting is applied to the background automatically.
 

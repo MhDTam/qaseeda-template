@@ -9,7 +9,7 @@ $buildRoot=Split-Path -Parent $PSScriptRoot
 $payload=Join-Path $OutputDirectory 'Nagham-v7'
 $native=Join-Path $payload 'native'
 New-Item -ItemType Directory -Path $payload,$native,(Join-Path $payload 'assets') -Force | Out-Null
-$files=@('index.html','styles.css','app.js','scene-renderer.js','custom-background.js','background-worker.js','i18n.js','editor-options.js','export-history.js','export-frame-packer.js','native-scene-export.js','README.md','README.en.md','CHANGELOG.md','TESTING.md','Start.cmd','LICENSE','THIRD_PARTY_NOTICES.md')
+$files=@('index.html','styles.css','app.js','scene-renderer.js','custom-background.js','background-worker.js','i18n.js','editor-options.js','export-history.js','export-frame-packer.js','native-scene-export.js','README.md','README.en.md','README.ar.md','CHANGELOG.md','TESTING.md','Start.cmd','LICENSE','THIRD_PARTY_NOTICES.md')
 foreach($file in $files) { Copy-Item -LiteralPath (Join-Path $buildRoot $file) -Destination $payload -Force }
 foreach($file in @('template-data.js','thmanyah.css','app-icon.png','app-icon-preview.png','app-background.svg','Thmanyah-License.pdf')) {
  Copy-Item -LiteralPath (Join-Path $buildRoot "assets/$file") -Destination (Join-Path $payload 'assets') -Force
