@@ -31,7 +31,7 @@ jobs:
       - name: Check payload and create release files
         shell: pwsh
         run: ./scripts/package-release.ps1
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: qaseeda-template-release
           path: release/distribution/*
