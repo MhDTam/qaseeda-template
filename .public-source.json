@@ -1,5 +1,5 @@
 {
-  "version": "1.02",
+  "version": "1.00",
   "files": [
     ".editorconfig",
     ".gitattributes",
@@ -47,7 +47,7 @@
     "desktop/native-renderer/scene.hlsl",
     "docs/BUILD.md",
     "docs/PUBLISH.md",
-    "docs/RELEASE_NOTES_1.02.md",
+    "docs/RELEASE_NOTES_1.00.md",
     "editor-options.js",
     "export-frame-packer.js",
     "export-history.js",

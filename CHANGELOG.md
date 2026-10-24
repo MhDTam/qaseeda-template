@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.02 — 2026-10-24
+## 1.00 — 2026-10-24
 
 First public release of Qaseeda Template under the MIT license, with copyright attributed to `MhDTam`.
 
@@ -9,4 +9,4 @@ First public release of Qaseeda Template under the MIT license, with copyright a
 - Local Windows MP4/WebM export up to 4K, custom export settings and export history.
 - Portable Windows package that uses a separately installed FFmpeg executable.
 
-Displayed product version: **1.02**. Standard package/assembly version: **1.0.2**.
+Displayed product version: **1.00**. Standard package/assembly version: **1.0.0**.

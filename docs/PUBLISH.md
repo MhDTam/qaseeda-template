@@ -41,10 +41,10 @@ The packager verifies payload extraction, version, absence of bundled FFmpeg, re
 For automated packaging, run **Build release candidate** from the Actions page. It uploads a downloadable artifact without publishing a release. Once the checks and a real export test pass, create the release tag:
 
 ```sh
-git tag -a v1.02 -m "Qaseeda Template 1.02"
-git push origin v1.02
+git tag -a v1.00 -m "Qaseeda Template 1.00"
+git push origin v1.00
 ```
 
 The tag workflow builds the public executable and creates a **draft** GitHub Release with ZIP files, checksums and bilingual notes. Review the assets and notes, test on a clean Windows machine, and publish the draft in GitHub. Workflow execution on GitHub is only verified after pushing the repository; local builds are not evidence of a successful Actions run.
 
-Use a release tag such as `v1.02`. The displayed product version is 1.02; the standard assembly/package version is 1.0.2. Both languages ship in the same executable. `package.json` is private to prevent accidental npm publication.
+Use a release tag such as `v1.00`. The displayed product version is 1.00; the standard assembly/package version is 1.0.0. Both languages ship in the same executable. `package.json` is private to prevent accidental npm publication.

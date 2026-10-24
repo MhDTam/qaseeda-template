@@ -44,5 +44,5 @@ jobs:
         run: |
           $version=(Get-Content package.json -Raw | ConvertFrom-Json).displayVersion
           $assets=Get-ChildItem -LiteralPath ./release/distribution -File | ForEach-Object FullName
-          gh release create $env:GITHUB_REF_NAME --draft --verify-tag --title "Qaseeda Template $version" --notes-file docs/RELEASE_NOTES_1.02.md @assets
+          gh release create $env:GITHUB_REF_NAME --draft --verify-tag --title "Qaseeda Template $version" --notes-file docs/RELEASE_NOTES_1.00.md @assets
           if($LASTEXITCODE -ne 0){throw 'Draft release creation failed'}
