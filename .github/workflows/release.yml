@@ -28,6 +28,9 @@ jobs:
       - name: Verify FFmpeg discovery
         shell: pwsh
         run: ./tests/ffmpeg-discovery.ps1
+      - name: Build online Windows installer
+        shell: pwsh
+        run: ./tools/package-installer.ps1
       - name: Check payload and create release files
         shell: pwsh
         run: ./scripts/package-release.ps1

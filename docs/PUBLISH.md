@@ -27,16 +27,17 @@ The supplied `.github/workflows/ci.yml` checks JavaScript/source data and compil
 
 ## Executable releases
 
-Public releases use **separately installed FFmpeg**. Do not upload a private build containing reference media, an embedded proprietary font or a bundled FFmpeg binary. The public app asks for the user's FFmpeg path on first export when it cannot locate an installed copy.
+Public releases use a small online installer that can provision WebView2 Runtime and an optional FFmpeg build from their publishers. Do not upload a private build containing reference media, an embedded proprietary font or a bundled FFmpeg binary. The portable app asks for the user's FFmpeg path on first export when it cannot locate an installed copy.
 
 Build and package from a committed, clean public checkout:
 
 ```powershell
 ./desktop/Build.ps1 -ExternalFFmpeg
+./tools/package-installer.ps1
 ./scripts/package-release.ps1
 ```
 
-The packager verifies payload extraction, version, absence of bundled FFmpeg, reference audio/video and embedded font, then produces a Windows portable ZIP, source ZIP and SHA-256 checksums in `release/distribution/`. Git archives committed source; commit intended changes before packaging. Put these files in GitHub Releases, not in Git history.
+The packager verifies payload extraction, version, absence of bundled FFmpeg, reference audio/video and embedded font, then produces a Windows installer, portable ZIP, source ZIP and SHA-256 checksums in `release/distribution/`. Git archives committed source; commit intended changes before packaging. Put these files in GitHub Releases, not in Git history.
 
 For automated packaging, run **Build release candidate** from the Actions page. It uploads a downloadable artifact without publishing a release. Once the checks and a real export test pass, create the release tag:
 
@@ -45,6 +46,6 @@ git tag -a v1.00 -m "Qaseeda Template 1.00"
 git push origin v1.00
 ```
 
-The tag workflow builds the public executable and creates a **draft** GitHub Release with ZIP files, checksums and bilingual notes. Review the assets and notes, test on a clean Windows machine, and publish the draft in GitHub. Workflow execution on GitHub is only verified after pushing the repository; local builds are not evidence of a successful Actions run.
+The tag workflow builds the public executable and creates a **draft** GitHub Release with the online installer, ZIP files, checksums and bilingual notes. Review the assets and notes, test on a clean Windows machine, and publish the draft in GitHub. Workflow execution on GitHub is only verified after pushing the repository; local builds are not evidence of a successful Actions run.
 
 Use a release tag such as `v1.00`. The displayed product version is 1.00; the standard assembly/package version is 1.0.0. Both languages ship in the same executable. `package.json` is private to prevent accidental npm publication.

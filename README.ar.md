@@ -23,8 +23,8 @@
 
 ## الاستخدام
 
-1. شغّل نسخة Windows من GitHub Releases، أو افتح `Start.cmd` في Chrome أو Edge لمعاينة نسخة المتصفح.
-2. ثبّت FFmpeg بشكل منفصل؛ ضعه بجوار التطبيق أو اختر `ffmpeg.exe` عند أول تصدير. يحفظ البرنامج مساره تلقائيًا.
+1. نزّل `QaseedaTemplate-1.00-Setup.exe` من GitHub Releases وشغّله. هذا مثبّت صغير ينزّل WebView2 من Microsoft عند الحاجة، وينزّل FFmpeg بعد التحقق من بصمته إذا أبقيت خياره محددًا. يلزم الاتصال بالإنترنت عند غياب هذه المتطلبات. أو افتح `Start.cmd` في Chrome أو Edge لمعاينة نسخة المتصفح.
+2. إذا اخترت نسخة ZIP المحمولة، ثبّت FFmpeg بنفسك؛ ضعه بجوار التطبيق أو اختر `ffmpeg.exe` عند أول تصدير. يحفظ البرنامج مساره تلقائيًا. يمكنك أيضًا إلغاء خيار FFmpeg أثناء التثبيت واستخدام نسختك الخاصة.
 3. أضف الصوت والغلاف، ثم اكتب عنوان المقطع والاسم.
 4. ضمن «خلفية المشهد» اضغط «أضف خلفيتك» واختر صورة، ثم اضبط خيار «الحفاظ على ألوان الخلفية».
 5. جرّب الحركة ثم اختر إعدادات التصدير.
@@ -49,7 +49,7 @@ npm run check
 
 ## بناء Windows
 
-تحتاج Windows 10/11 x64، وVisual Studio 2022 Build Tools مع أدوات C++ وWindows SDK، و.NET Framework 4.8، ونسخة FFmpeg مناسبة. يُستعاد WebView2 SDK بإصدار وبصمة ثابتين؛ يلزم WebView2 Runtime على جهاز المستخدم.
+تحتاج Windows 10/11 x64، وVisual Studio 2022 Build Tools مع أدوات C++ وWindows SDK، و.NET Framework 4.8. يُستعاد WebView2 SDK بإصدار وبصمة ثابتين. يوفّر المثبّت WebView2 Runtime وFFmpeg الاختياري للمستخدم.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File desktop/Build.ps1 -ExternalFFmpeg

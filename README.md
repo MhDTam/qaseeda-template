@@ -18,7 +18,7 @@ The background effect animates light over an image; it does not generate real ob
 
 ## Use
 
-Download `QaseedaTemplate-1.00-windows-x64.zip` from the repository's Releases, extract it and run `QaseedaTemplate-1.00.exe`, or open `Start.cmd` in Chrome/Edge for the browser version. Install FFmpeg separately: place `ffmpeg.exe` beside the app, add it to PATH, or select it on your first export. The app remembers its path. Choose a track and artwork, enter a title and artist name, then select **Add your background** and choose an image. Preview the scene and choose your export settings.
+Download `QaseedaTemplate-1.00-Setup.exe` from Releases and run it. This small online installer installs Microsoft's WebView2 Runtime if missing and, if selected, downloads a verified FFmpeg build for video export. An internet connection is needed when those components are missing. You can opt out of FFmpeg during setup and use your own copy. For a portable copy, extract `QaseedaTemplate-1.00-windows-x64.zip` and run `QaseedaTemplate-1.00.exe`; install FFmpeg separately or select it on first export. The browser version opens with `Start.cmd` in Chrome/Edge. Choose a track and artwork, enter a title and artist name, then select **Add your background** and choose an image. Preview the scene and choose your export settings.
 
 No account, API key, runtime npm package or server upload is required. To serve the browser version locally:
 
@@ -30,7 +30,7 @@ Open `http://127.0.0.1:8765/`. Run `npm run check` with Node.js 20.11+ for synta
 
 ## Build and publish
 
-Windows 10/11 x64, Visual Studio 2022 C++ Build Tools, a Windows SDK, .NET Framework 4.8 and a suitable static FFmpeg executable are required. The first build restores a pinned, checksum-verified WebView2 SDK package. Users need the WebView2 Runtime.
+Windows 10/11 x64, Visual Studio 2022 C++ Build Tools, a Windows SDK, and .NET Framework 4.8 are required to build. The first build restores a pinned, checksum-verified WebView2 SDK package. The online installer provisions WebView2 Runtime and optionally FFmpeg for users.
 
 ```powershell
 ./desktop/Build.ps1 -ExternalFFmpeg

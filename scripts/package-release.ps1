@@ -29,6 +29,9 @@ else{
  & git -C $root archive --format=zip --prefix=qaseeda-template/ --output=$source HEAD
  if($LASTEXITCODE -ne 0){throw 'Commit the prepared source before packaging a GitHub release, or supply the prepared source ZIP with -SourceArchive.'}
 }
-$checks=@($portable,$source) | ForEach-Object { (Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash.ToLower()+'  '+[IO.Path]::GetFileName($_) }
+$setup=Join-Path $out "QaseedaTemplate-$version-Setup.exe"
+$assets=@($portable,$source)
+if(Test-Path -LiteralPath $setup){$assets+= $setup}
+$checks=$assets | ForEach-Object { (Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash.ToLower()+'  '+[IO.Path]::GetFileName($_) }
 [IO.File]::WriteAllLines((Join-Path $out "SHA256SUMS-$version.txt"),$checks,(New-Object Text.UTF8Encoding($false)))
 Write-Host "Release files: $out"

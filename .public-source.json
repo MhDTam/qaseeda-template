@@ -55,6 +55,7 @@
     "index.html",
     "licenses/FFmpeg-Build.txt",
     "licenses/FFmpeg-License.txt",
+    "licenses/InnoSetup-License.txt",
     "licenses/NativeRenderer-Licenses.txt",
     "licenses/WebView2-License.txt",
     "locales/en.js",
@@ -69,6 +70,8 @@
     "tests/background-scroll.js",
     "tests/ffmpeg-discovery.ps1",
     "tests/language-switch.js",
-    "tests/native-export-setup.mjs"
+    "tests/native-export-setup.mjs",
+    "tools/QaseedaTemplate.iss",
+    "tools/package-installer.ps1"
   ]
 }
