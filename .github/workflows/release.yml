@@ -39,7 +39,7 @@ jobs:
           name: qaseeda-template-release
           path: release/distribution/*
           if-no-files-found: error
-      - name: Create draft GitHub Release
+      - name: Create or update GitHub Release
         if: github.ref_type == 'tag'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -47,5 +47,13 @@ jobs:
         run: |
           $version=(Get-Content package.json -Raw | ConvertFrom-Json).displayVersion
           $assets=Get-ChildItem -LiteralPath ./release/distribution -File | ForEach-Object FullName
-          gh release create $env:GITHUB_REF_NAME --draft --verify-tag --title "Qaseeda Template $version" --notes-file docs/RELEASE_NOTES_1.00.md @assets
-          if($LASTEXITCODE -ne 0){throw 'Draft release creation failed'}
+          gh release view $env:GITHUB_REF_NAME *> $null
+          if($LASTEXITCODE -eq 0){
+            gh release upload $env:GITHUB_REF_NAME @assets --clobber
+            if($LASTEXITCODE -ne 0){throw 'Release asset update failed'}
+            gh release edit $env:GITHUB_REF_NAME --notes-file docs/RELEASE_NOTES_1.00.md
+            if($LASTEXITCODE -ne 0){throw 'Release notes update failed'}
+          } else {
+            gh release create $env:GITHUB_REF_NAME --draft --verify-tag --title "Qaseeda Template $version" --notes-file docs/RELEASE_NOTES_1.00.md @assets
+            if($LASTEXITCODE -ne 0){throw 'Draft release creation failed'}
+          }
