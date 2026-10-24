@@ -1,5 +1,5 @@
 {
-  "version": "1.00",
+  "version": "1.01",
   "files": [
     ".editorconfig",
     ".gitattributes",
@@ -48,7 +48,7 @@
     "desktop/native-renderer/scene.hlsl",
     "docs/BUILD.md",
     "docs/PUBLISH.md",
-    "docs/RELEASE_NOTES_1.00.md",
+    "docs/RELEASE_NOTES_1.01.md",
     "docs/screenshot-en.png",
     "docs/screenshot.png",
     "editor-options.js",

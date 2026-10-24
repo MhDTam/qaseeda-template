@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.01 — 2026-10-24
+
+- Corrected the MIT copyright attribution to `MhDTam` in the public source, Windows package, and executable metadata.
+- Republished the Windows and source archives from the corrected public source.
+
+Displayed product version: **1.01**. Standard package/assembly version: **1.0.1**.
+
 ## 1.00 — 2026-10-23
 
 - Arabic and English interface, a saved language preference, and automatic RTL/LTR layout. User-entered text and filenames stay unchanged.

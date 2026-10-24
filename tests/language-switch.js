@@ -16,5 +16,5 @@ async(page)=>{
  await page.locator('[data-language="en"]').click();await page.reload();
  await page.waitForFunction(()=>state.assetsReady);
  if(!await page.evaluate(()=>QaseedaI18n.language==='en'&&document.documentElement.dir==='ltr'))throw Error('Language preference not saved');
- return {english:true,arabic:true,optionsTranslated:true,userValuesPreserved:true,persisted:true,version:'1.00'};
+ return {english:true,arabic:true,optionsTranslated:true,userValuesPreserved:true,persisted:true,version:'1.01'};
 }

@@ -1,4 +1,4 @@
-# Qaseeda Template · 1.00
+# Qaseeda Template · 1.01
 
 **English** · [العربية](README.ar.md)
 
@@ -20,7 +20,7 @@ The background effect animates light over an image; it does not generate real ob
 
 ## Use
 
-Download `QaseedaTemplate-1.00.exe` from the repository's Releases, or open `Start.cmd` in Chrome/Edge for the browser version. Install FFmpeg separately: place `ffmpeg.exe` beside the app, add it to PATH, or select it on your first export. The app remembers its path. Choose a track and artwork, enter a title and artist name, then select **Add your background** and choose an image. Preview the scene and choose your export settings.
+Download `QaseedaTemplate-1.01-windows-x64.zip` from the repository's Releases, extract it and run `QaseedaTemplate-1.01.exe`, or open `Start.cmd` in Chrome/Edge for the browser version. Install FFmpeg separately: place `ffmpeg.exe` beside the app, add it to PATH, or select it on your first export. The app remembers its path. Choose a track and artwork, enter a title and artist name, then select **Add your background** and choose an image. Preview the scene and choose your export settings.
 
 No account, API key, runtime npm package or server upload is required. To serve the browser version locally:
 
@@ -38,7 +38,7 @@ Windows 10/11 x64, Visual Studio 2022 C++ Build Tools, a Windows SDK, .NET Frame
 ./desktop/Build.ps1 -ExternalFFmpeg
 ```
 
-See [BUILD.md](docs/BUILD.md), [PUBLISH.md](docs/PUBLISH.md), and [TESTING.md](TESTING.md). Human-facing release version: **1.00**; machine-readable package/assembly version: **1.0.0**.
+See [BUILD.md](docs/BUILD.md), [PUBLISH.md](docs/PUBLISH.md), and [TESTING.md](TESTING.md). Human-facing release version: **1.01**; machine-readable package/assembly version: **1.0.1**.
 
 ## License and assets
 

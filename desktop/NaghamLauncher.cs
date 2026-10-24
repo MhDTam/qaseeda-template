@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
@@ -15,9 +15,11 @@ using Microsoft.Web.WebView2.WinForms;
 [assembly:AssemblyTitle("قالب قصيدة")]
 [assembly:AssemblyProduct("قالب قصيدة")]
 [assembly:AssemblyDescription("تصميم مقاطع القصائد الصوتية")]
-[assembly:AssemblyVersion("1.0.0.0")]
-[assembly:AssemblyFileVersion("1.0.0.0")]
-[assembly:AssemblyInformationalVersion("1.00")]
+[assembly:AssemblyCompany("MhDTam")]
+[assembly:AssemblyCopyright("Copyright (c) 2026 MhDTam")]
+[assembly:AssemblyVersion("1.0.1.0")]
+[assembly:AssemblyFileVersion("1.0.1.0")]
+[assembly:AssemblyInformationalVersion("1.01")]
 internal static class Program {
  internal static string Root;
  [DllImport("kernel32.dll",CharSet=CharSet.Unicode)] static extern IntPtr LoadLibrary(string file);
@@ -25,7 +27,7 @@ internal static class Program {
   string data=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Nagham");byte[] payload;
   using(var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("Nagham.Payload.zip"))using(var memory=new MemoryStream()){stream.CopyTo(memory);payload=memory.ToArray();}
   string hash;using(var sha=SHA256.Create()){hash=BitConverter.ToString(sha.ComputeHash(payload)).Replace("-","").Substring(0,16);}Root=Path.Combine(data,"Versions",hash);
-  if(!File.Exists(Path.Combine(Root,"complete"))){Directory.CreateDirectory(Root);string safe=Path.GetFullPath(Root)+Path.DirectorySeparatorChar;using(var memory=new MemoryStream(payload))using(var zip=new ZipArchive(memory,ZipArchiveMode.Read))foreach(var entry in zip.Entries){string file=Path.GetFullPath(Path.Combine(Root,entry.FullName.Replace('/',Path.DirectorySeparatorChar)));if(!file.StartsWith(safe,StringComparison.OrdinalIgnoreCase))throw new InvalidDataException("Invalid package.");if(String.IsNullOrEmpty(entry.Name)){Directory.CreateDirectory(file);continue;}Directory.CreateDirectory(Path.GetDirectoryName(file));using(var source=entry.Open())using(var output=File.Create(file))source.CopyTo(output);}File.WriteAllText(Path.Combine(Root,"complete"),"1.00");}
+  if(!File.Exists(Path.Combine(Root,"complete"))){Directory.CreateDirectory(Root);string safe=Path.GetFullPath(Root)+Path.DirectorySeparatorChar;using(var memory=new MemoryStream(payload))using(var zip=new ZipArchive(memory,ZipArchiveMode.Read))foreach(var entry in zip.Entries){string file=Path.GetFullPath(Path.Combine(Root,entry.FullName.Replace('/',Path.DirectorySeparatorChar)));if(!file.StartsWith(safe,StringComparison.OrdinalIgnoreCase))throw new InvalidDataException("Invalid package.");if(String.IsNullOrEmpty(entry.Name)){Directory.CreateDirectory(file);continue;}Directory.CreateDirectory(Path.GetDirectoryName(file));using(var source=entry.Open())using(var output=File.Create(file))source.CopyTo(output);}File.WriteAllText(Path.Combine(Root,"complete"),"1.01");}
   AppDomain.CurrentDomain.AssemblyResolve+=(sender,e)=>{string dll=Path.Combine(Root,"native",new AssemblyName(e.Name).Name+".dll");return File.Exists(dll)?Assembly.LoadFrom(dll):null;};
   if(LoadLibrary(Path.Combine(Root,"native","WebView2Loader.dll"))==IntPtr.Zero)throw new Exception("تعذّر تحميل محرك العرض.");
   if(args.Length==2&&args[0]=="--self-test"){File.WriteAllLines(args[1],new[]{"Ready="+File.Exists(Path.Combine(Root,"index.html")),"Root="+Root,"Host=Native WebView2","PayloadSHA256="+hash});return 0;}
@@ -49,7 +51,7 @@ internal sealed class StudioWindow:Form {
   SetLanguage(English);
   web.Dock=DockStyle.Fill;web.Margin=Padding.Empty;web.DefaultBackgroundColor=BackColor;layout.Controls.Add(web,0,1);Shown+=async(s,e)=>await Initialize();FormClosed+=(s,e)=>{if(nativeExport!=null)nativeExport.Dispose();web.Dispose();};
  }
- internal void SetLanguage(bool english){English=english;Text=english?"Qaseeda Template":"قالب قصيدة";captionTitle.Text=Text;captionSubtitle.Text=english?"Audio visual studio · 1.00":"استوديو القصائد الصوتية · 1.00";foreach(Control container in caption.Controls)foreach(Control control in container.Controls){var button=control as StudioCaptionButton;if(button!=null)button.AccessibleName=button.Text=="×"?(english?"Close":"إغلاق"):button.Text=="—"?(english?"Minimize":"تصغير"):(english?"Maximize / restore":"تكبير واستعادة");}}
+ internal void SetLanguage(bool english){English=english;Text=english?"Qaseeda Template":"قالب قصيدة";captionTitle.Text=Text;captionSubtitle.Text=english?"Audio visual studio · 1.01":"استوديو القصائد الصوتية · 1.01";foreach(Control container in caption.Controls)foreach(Control control in container.Controls){var button=control as StudioCaptionButton;if(button!=null)button.AccessibleName=button.Text=="×"?(english?"Close":"إغلاق"):button.Text=="—"?(english?"Minimize":"تصغير"):(english?"Maximize / restore":"تكبير واستعادة");}}
  StudioCaptionButton CaptionButton(string text){return new StudioCaptionButton{Text=text,AccessibleName=text=="×"?"إغلاق":text=="—"?"تصغير":"تكبير واستعادة",Width=44,Height=36,Margin=new Padding(2,0,0,0),TabStop=false};}
  void ToggleMaximize(){if(WindowState==FormWindowState.Normal){MaximizedBounds=Screen.FromControl(this).WorkingArea;WindowState=FormWindowState.Maximized;}else WindowState=FormWindowState.Normal;}
  protected override void WndProc(ref Message m){if(m.Msg==0x84&&WindowState==FormWindowState.Normal){long point=m.LParam.ToInt64();Point p=PointToClient(new Point((short)(point&0xffff),(short)((point>>16)&0xffff)));bool left=p.X<6,right=p.X>=ClientSize.Width-6,top=p.Y<6,bottom=p.Y>=ClientSize.Height-6;int hit=top?(left?13:right?14:12):bottom?(left?16:right?17:15):left?10:right?11:0;if(hit!=0){m.Result=new IntPtr(hit);return;}}base.WndProc(ref m);}

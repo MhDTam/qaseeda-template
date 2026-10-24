@@ -6,7 +6,7 @@ window.QASEEDA_EN={
   "أضف مقطعًا وصورة، واختر لونًا. خلفية متحركة وبطاقة زجاجية، ومعاينة مباشرة لكل تفاصيلك.": "Add audio and artwork, choose a color, and preview your animated glass scene.",
   "كل التفاصيل بين يديك": "Make it yours",
   "تفاصيل المشهد": "Scene details",
-  "الإصدار 1.00": "Version 1.00",
+  "الإصدار 1.01": "Version 1.01",
   "الصوت والغلاف": "Audio & artwork",
   "المقطع الصوتي": "Audio track",
   "اختر MP3 أو WAV أو M4A": "Choose MP3, WAV or M4A",

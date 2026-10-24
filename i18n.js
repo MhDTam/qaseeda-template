@@ -14,7 +14,7 @@ window.QaseedaI18n=(()=>{
   document.querySelectorAll('[data-i18n]').forEach(element=>{element.textContent=text(element.dataset.i18n);});
   for(const attribute of ['placeholder','title','aria-label'])document.querySelectorAll('[data-i18n-'+attribute+']').forEach(element=>element.setAttribute(attribute,text(element.getAttribute('data-i18n-'+attribute))));
   document.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===language)));
-  document.title=text('قالب قصيدة')+' · 1.00';
+  document.title=text('قالب قصيدة')+' · 1.01';
  }
  function refreshDynamic(){
   if(typeof state==='undefined')return;
