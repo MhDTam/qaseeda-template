@@ -12,7 +12,7 @@ const files=['.gitignore','.gitattributes','package.json','README.md','README.en
  'assets/app-icon.png','assets/app-background.svg','assets/Thmanyah-License.pdf',
  'licenses/FFmpeg-License.txt','licenses/FFmpeg-Build.txt','licenses/NativeRenderer-Licenses.txt','licenses/WebView2-License.txt',
  'docs/BUILD.md','docs/PUBLISH.md','.github/workflows/ci.yml',
- '.editorconfig','.github/ISSUE_TEMPLATE/bug_report.yml','.github/ISSUE_TEMPLATE/feature_request.yml','.github/ISSUE_TEMPLATE/config.yml','.github/PULL_REQUEST_TEMPLATE.md','.github/dependabot.yml','.github/workflows/release.yml','docs/RELEASE_NOTES_1.01.md','scripts/package-release.ps1','desktop/FFmpegLocator.cs'];
+ '.editorconfig','.github/ISSUE_TEMPLATE/bug_report.yml','.github/ISSUE_TEMPLATE/feature_request.yml','.github/ISSUE_TEMPLATE/config.yml','.github/PULL_REQUEST_TEMPLATE.md','.github/dependabot.yml','.github/workflows/release.yml','docs/RELEASE_NOTES_1.02.md','scripts/package-release.ps1','desktop/FFmpegLocator.cs'];
 for(const name of files){const target=join(out,name);mkdirSync(dirname(target),{recursive:true});copyFileSync(join(root,name),target);}
 const box={window:{}};vm.runInNewContext(readFileSync(join(root,'assets/template-data.js'),'utf8'),box);
 const data=createPublicTemplate(box.window.NAGHAM_TEMPLATE);
@@ -22,5 +22,5 @@ writeFileSync(join(out,'assets/thmanyah.css'),'/* Optional: install a licensed T
 writeFileSync(join(out,'.gitignore'),readFileSync(join(out,'.gitignore'),'utf8').replace(/^\/assets\/(?:template-data\.js|thmanyah\.css)\r?$/gm,'').trimEnd()+'\n');
 const html=readFileSync(join(out,'index.html'),'utf8').replace(/<button class="background-choice" data-background="original".*?<\/button>/,'');
 writeFileSync(join(out,'index.html'),html);
-writeFileSync(join(out,'.public-source.json'),JSON.stringify({version:'1.01',files:[...files,'assets/template-data.js','assets/thmanyah.css','.public-source.json'].sort()},null,2)+'\n');
+writeFileSync(join(out,'.public-source.json'),JSON.stringify({version:'1.02',files:[...files,'assets/template-data.js','assets/thmanyah.css','.public-source.json'].sort()},null,2)+'\n');
 console.log('Prepared publish/github: generated artwork and motion, no reference video or embedded proprietary font.');

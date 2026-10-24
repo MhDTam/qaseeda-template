@@ -38,13 +38,13 @@ The test generates its own portrait PNG, simulates returned file-picker focus, v
 Locally, the actual file chooser was also exercised with a 6000×8000 JPEG. Before the fix, the hidden outer workspace scrolled by 402px and could not be restored by wheel scrolling; after the fix it stayed at 0. Worker preparation took approximately 377ms with 37 UI timer ticks and a maximum 11ms tick gap on the test machine. Rapid replacement cancelled the previous worker; invalid images kept the last valid background. Mobile page scrolling was also checked.
 
 
-## Release 1.01: Arabic / English
+## Release 1.02: Arabic / English
 
-Run `tests/language-switch.js` with the same Playwright CLI `run-code --filename` workflow. It verifies both directions, translation of animation/export options and placeholders, saved language preference, and unchanged user-entered Arabic/English values. `npm run check` also validates that every static translation key exists in the English locale and that the displayed version is 1.01.
+Run `tests/language-switch.js` with the same Playwright CLI `run-code --filename` workflow. It verifies both directions, translation of animation/export options and placeholders, saved language preference, and unchanged user-entered Arabic/English values. `npm run check` also validates that every static translation key exists in the English locale and that the displayed version is 1.02.
 
 The English export summary, custom background status, history, narrow-screen layout and language persistence were checked locally. Native smoke reports named with `enlang` switch the Windows caption, dialogs, errors and notifications to English through the native language bridge. These smoke tests use their own WebView2 profile, not the user's profile.
 
-Release 1.01 source and Windows build validation passed: all 251 English strings have static-key coverage; browser language/scroll regression tests passed in the clean public package; native Windows English and Arabic custom-background exports passed at 1600×900 / 37fps with H.264/AAC and no audio playback. Native English bridge returned the title "Qaseeda Template" and product file metadata reports "1.01".
+Release 1.02 source and Windows build validation passed: all 251 English strings have static-key coverage; browser language/scroll regression tests passed in the clean public package; native Windows English and Arabic custom-background exports passed at 1600×900 / 37fps with H.264/AAC and no audio playback. Native English bridge returned the title "Qaseeda Template" and product file metadata reports "1.02".
 
 ## Public release: external FFmpeg
 

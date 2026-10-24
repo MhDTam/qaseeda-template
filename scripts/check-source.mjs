@@ -23,12 +23,12 @@ for(const match of html.matchAll(/data-i18n(?:-(?:placeholder|title|aria-label))
  const key=match[1].replaceAll('&quot;','"').replaceAll('&amp;','&');
  assert.ok(dictionary[key],`Missing English translation: ${key}`);
 }
-assert.equal(JSON.parse(readFileSync('package.json','utf8')).displayVersion,'1.01');
-console.log(`English locale coverage passed: ${Object.keys(dictionary).length} translations; version 1.01.`);
+assert.equal(JSON.parse(readFileSync('package.json','utf8')).displayVersion,'1.02');
+console.log(`English locale coverage passed: ${Object.keys(dictionary).length} translations; version 1.02.`);
 
 if(existsSync('.public-source.json')){
  const manifest=JSON.parse(readFileSync('.public-source.json','utf8'));
- assert.equal(manifest.version,'1.01');
+ assert.equal(manifest.version,'1.02');
  assert.ok(!/data:(?:video|audio)\//i.test(JSON.stringify(data)),'Reference audio/video must not be public.');
  assert.ok(!/base64/i.test(readFileSync('assets/thmanyah.css','utf8')),'Do not embed the proprietary font.');
  assert.ok(!keys.includes('original'),'Private reference preset must not be public.');

@@ -18,7 +18,7 @@ $out=Join-Path $BuildDirectory 'distribution'
 $stage=Join-Path $BuildDirectory "portable-$version"
 New-Item -ItemType Directory -Path $out,$stage -Force | Out-Null
 Copy-Item -LiteralPath $exe -Destination (Join-Path $stage "QaseedaTemplate-$version.exe") -Force
-foreach($file in @('LICENSE','THIRD_PARTY_NOTICES.md','docs/RELEASE_NOTES_1.01.md')){Copy-Item -LiteralPath (Join-Path $root $file) -Destination $stage -Force}
+foreach($file in @('LICENSE','THIRD_PARTY_NOTICES.md','docs/RELEASE_NOTES_1.02.md')){Copy-Item -LiteralPath (Join-Path $root $file) -Destination $stage -Force}
 Copy-Item -LiteralPath (Join-Path $root 'licenses') -Destination $stage -Recurse -Force
 $portable=Join-Path $out "QaseedaTemplate-$version-windows-x64.zip"
 Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $portable -Force
