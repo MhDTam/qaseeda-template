@@ -4,6 +4,15 @@
 
 An offline audio visualizer and Windows video creator with a minimal glass interface. Upload an audio track, cover artwork, an optional logo and your own background image. Animated lighting is applied to the background automatically.
 
+![Qaseeda Template Interface](docs/screenshot.png)
+
+<details>
+<summary><b>English interface preview</b></summary>
+
+![Qaseeda Template English Interface](docs/screenshot-en.png)
+
+</details>
+
 ## Features
 
 - Switch between **English** and **العربية** at the top of the window. Your choice is saved; text direction changes automatically. Uploaded filenames, track titles and artist names are never translated.

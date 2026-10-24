@@ -48,6 +48,8 @@
     "docs/BUILD.md",
     "docs/PUBLISH.md",
     "docs/RELEASE_NOTES_1.00.md",
+    "docs/screenshot-en.png",
+    "docs/screenshot.png",
     "editor-options.js",
     "export-frame-packer.js",
     "export-history.js",
