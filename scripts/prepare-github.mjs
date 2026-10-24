@@ -9,9 +9,9 @@ const files=['.gitignore','.gitattributes','package.json','README.md','README.en
  'tests/background-scroll.js','tests/language-switch.js','tests/ffmpeg-discovery.ps1','tests/native-export-setup.mjs','scripts/check-source.mjs','scripts/prepare-github.mjs','scripts/public-template.mjs',
  'desktop/Build.ps1','desktop/Restore-Dependencies.ps1','desktop/NaghamLauncher.cs','desktop/NativeExport.cs','desktop/NativeSceneExport.cs','desktop/ExportHistory.cs','desktop/ScreenColorPicker.cs','desktop/Localization.cs','desktop/Qaseeda.ico',
  'desktop/native-renderer/Build.ps1','desktop/native-renderer/main.cpp','desktop/native-renderer/scene.hlsl','desktop/native-renderer/include/json.hpp','desktop/native-renderer/include/nvEncodeAPI.h',
- 'assets/app-icon.png','assets/app-icon-preview.png','assets/app-background.svg','assets/Thmanyah-License.pdf',
+ 'assets/app-icon.png','assets/app-background.svg','assets/Thmanyah-License.pdf',
  'licenses/FFmpeg-License.txt','licenses/FFmpeg-Build.txt','licenses/NativeRenderer-Licenses.txt','licenses/WebView2-License.txt',
- 'docs/BUILD.md','docs/PUBLISH.md','docs/screenshot.png','docs/screenshot-en.png','.github/workflows/ci.yml',
+ 'docs/BUILD.md','docs/PUBLISH.md','.github/workflows/ci.yml',
  '.editorconfig','.github/ISSUE_TEMPLATE/bug_report.yml','.github/ISSUE_TEMPLATE/feature_request.yml','.github/ISSUE_TEMPLATE/config.yml','.github/PULL_REQUEST_TEMPLATE.md','.github/dependabot.yml','.github/workflows/release.yml','docs/RELEASE_NOTES_1.01.md','scripts/package-release.ps1','desktop/FFmpegLocator.cs'];
 for(const name of files){const target=join(out,name);mkdirSync(dirname(target),{recursive:true});copyFileSync(join(root,name),target);}
 const box={window:{}};vm.runInNewContext(readFileSync(join(root,'assets/template-data.js'),'utf8'),box);

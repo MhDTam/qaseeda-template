@@ -37,7 +37,7 @@ if(existsSync('.public-source.json')){
   assert.ok(!name.startsWith('/')&&!name.includes('..')&&!name.includes('\\')&&!/^[a-z]:/i.test(name),'Unsafe manifest path.');
   assert.ok(!/^(?:release|output|publish|node_modules|desktop\/deps)\//.test(name),'Private output in source manifest.');
   const content=readFileSync(name);
-  if(/\.(?:js|mjs|html|css|cs|ps1|md|json|yml)$/.test(name))assert.ok(!/(?:C:[\\/]Users[\\/]moham|M:[\\/]Codex)/i.test(content.toString('utf8')),`Personal path in ${name}`);
+  if(/\.(?:js|mjs|html|css|cs|ps1|md|json|yml)$/.test(name))assert.ok(!/(?:[A-Z]:[\\/]Users[\\/][^\\/\s]+|[A-Z]:[\\/]Codex[\\/])/i.test(content.toString('utf8')),`Personal path in ${name}`);
  }
  console.log(`Public release checks passed: ${manifest.files.length} allowed source files, no private reference media or embedded font.`);
 }
